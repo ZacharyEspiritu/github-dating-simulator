@@ -1,0 +1,275 @@
+<% if @practical %>
+    <style>
+    .match-card {
+        width: 370px;
+        box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+        position: relative;
+        font-size: 16px;
+        background-color: white;
+        color: black;
+        margin: 15px;
+    }
+
+    .card-header {
+        width: 370px;
+        height: 8px;
+        background-color: black;
+        vertical-align: middle;
+    }
+
+    .card-row {
+        display: table;
+        width: 370px;
+        height: 80px;
+    }
+
+    .card-picture {
+        display: table-cell;
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-picture img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-name {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
+        width: 290px;
+        height: 80px;
+        padding-left: 12px;
+    }
+
+    .card-percentage {
+        position: absolute;
+        top: 85px;
+        right: 20px;
+        font-size: 24px;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .links {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    </style>
+
+
+        <div id="header">
+            <center>
+            Team Matching Results
+            <h2> Copy this link to share with your friends: <a href="http://githubdatingsim.com/result/<%= @result_name %>"> <br> http://githubdatingsim.com/result/<%= @result_name %> </a> </h2>
+            </center>
+        </div>
+    <main>
+        <div class="more-data" style="text-align: center; font-size: 30px;">
+            Most used languages:
+            <% @percentages.each_with_index do |lang_block, index| %>
+                <% if index < 4 %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<%= lang_block.first %> <%= lang_block.second.round(2) %>%
+                <% end %>
+            <% end %>
+        </div>
+        <div class="cards">
+            <% @match_data.each do |data| %>
+                <% if data.length == 7 %>
+                    <% if data.first == 0 %>
+                        <div class="match-card" style="padding: 7px;">
+                            <center>
+                            <%= data.second %> was unable to be matched...
+                            </center>
+                        </div>
+                    <% else %>
+                        <% percentage = data.first %>
+                        <% user_1 = data.second %>
+                        <% user_2 = data.third %>
+                        <% user_3 = data.fourth %>
+                        <% user_4 = data.fifth %>
+
+                        <div class="match-card">
+                            <div class="card-header"></div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_1).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_1 %>
+                                </div>
+                            </div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_2).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_2 %>
+                                </div>
+                            </div>
+
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_3).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_3 %>
+                                </div>
+                            </div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_4).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_4 %>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding: 6px;">
+                                Idea:<br>
+                                <%= data[5].first %>
+                            </div>
+                            <div class="card-percentage">
+                                <%= percentage.round(2) %>%
+                                (<%= data[6] %>)
+                            </div>
+                        </div>
+                    <% end %>
+                <% elsif data.length == 6 %>
+                    <% if data.first == 0 %>
+                        <div class="match-card" style="padding: 7px;">
+                            <center>
+                            <%= data.second %> was unable to be matched...
+                            </center>
+                        </div>
+                    <% else %>
+                        <% percentage = data.first %>
+                        <% user_1 = data.second %>
+                        <% user_2 = data.third %>
+                        <% user_3 = data.fourth %>
+
+                        <div class="match-card">
+                            <div class="card-header"></div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_1).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_1 %>
+                                </div>
+                            </div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_2).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_2 %>
+                                </div>
+                            </div>
+
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_3).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_3 %>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding: 6px;">
+                                Idea:<br>
+                                <%= data.fifth.first %>
+                            </div>
+                            <div class="card-percentage">
+                                <%= percentage.round(2) %>%
+                                (<%= data[5] %>)
+                            </div>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <% if data.first == 0 %>
+                        <div class="match-card" style="padding: 7px;">
+                            <center>
+                            <%= data.second %> was unable to be matched...
+                            </center>
+                        </div>
+                    <% else %>
+                        <% percentage = data.first %>
+                        <% user_1 = data.second %>
+                        <% user_2 = data.third %>
+
+                        <div class="match-card">
+                            <div class="card-header"></div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_1).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_1 %>
+                                </div>
+                            </div>
+                            <div class="card-row">
+                                <div class="card-picture">
+                                    <%= image_tag UserData.find_by(username: user_2).avatar_url %>
+                                </div>
+                                <div class="card-name" style="font-size: 20px;">
+                                    <%= user_2 %>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding: 6px;">
+                                Idea:<br>
+                                <%= data.fourth.first %>
+                            </div>
+                            <div class="card-percentage">
+                                <%= percentage %>%
+                                (<%= data.fifth %>)
+                            </div>
+                        </div>
+                    <% end %>
+                <% end %>
+                <br>
+            <% end %>
+        </div>
+        <div class="cards">
+            <div class="links"><a href="/practical">again?</a></div>
+        </div>
+    </main>
+<% else %>
+    <center>
+        <div id="header">
+            Analysis
+            <h2> Copy this link to share with your friends: <a href="http://githubdatingsim.com/result/<%= @result_name %>"> <br> http://githubdatingsim.com/result/<%= @result_name %> </a> </h2>
+        </div>
+            <div id="content">
+                Compatibility: <%= @percentage %>% <br>
+                <div style="height: 14px;"></div>
+                <%= image_tag @user_1.avatar_url, style: "width: 256px; height: 256px;" %> &nbsp; &nbsp; &nbsp; <%= image_tag @user_2.avatar_url, style: "width: 256px; height: 256px;" %> <br>
+                <h3> <%= @user_1.username %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= @user_2.username %> <br> <br>
+
+                <% @user_1.data.sort_by {|_key, value| value}.reverse.each_with_index do |lang_block, index| %>
+                    <% if index < 3 %>
+                        <%= lang_block.first %> &nbsp; <%= lang_block.second.round(1) %>% &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= @user_2.data.sort_by {|_key, value| value}.reverse[index].first rescue "n/a" %> &nbsp; <%= @user_2.data.sort_by {|_key, value| value}.reverse[index].second.round(1) rescue "—" %>% <br>
+                    <% end %>
+                <% end %>
+                <br>
+                First Date Ideas:
+                <% @date_ideas.each do |idea| %>
+                    <br><%= idea %>
+                <% end %><br><br>
+                <a href="http://www.hackalist.org/">Looking for a place for your first date?</a>
+
+                <br><br>
+                <a href="/practical">Want to use this to plan teams for your next hackathon?</a>
+            </div>
+            <div id="footer">
+                A hackathon project by Zachary Espiritu &amp; Isabella Berry, made at hackCooper 2016<br>
+                <a href="/practical">The More Practical Version</a> | <a href="https://github.com/ZacharyEspiritu/github-dating-simulator">Source Code</a> | <a href="http://zacharyespiritu.com">Contact</a>
+            </div>
+    <center>
+<% end %>

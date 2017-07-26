@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+<div style="font-size: 40px;">Parties</div>
+
+<p style="max-width: 1000px; font-size: 20px;">You can create a new Party here. This will give you a link that you can send out to people to input their Github usernames in themselves. When you're ready, you can then start the team matching process.</p>
+
+<% party = Party.new %>
+<%= form_for(party) do |f| %>
+  <% if party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(party.errors.count, "error") %> prohibited this party from being saved:</h2>
+
+      <ul>
+      <% party.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br>
+
+<div id="footer">
+            A hackathon project by Zachary Espiritu &amp; Isabella Berry, made at hackCooper 2016<br>
+            <a href="/">The Less Practical Version</a> | <a href="https://github.com/ZacharyEspiritu/github-dating-simulator">Source Code</a> | <a href="http://zacharyespiritu.com">Contact</a>
+        </div>
+
+
+</center>

@@ -1,0 +1,29 @@
+<div id="container">
+<center>
+    <div id="header">
+        Github <strike>Dating Simulator</strike> Team Matcher
+    </div>
+    <div id="content" style="font-size: 20px;">
+            (or try out <%= link_to "Github Dating Parties", parties_path %>!)<br><br>
+            <%= form_tag analyze_multiple_path do %>
+                Enter usernames delimited by:<br>
+                <%= radio_button_tag :selection_method, :newlines, checked: true %> New Lines
+                <%= radio_button_tag :selection_method, :commas %> Commas
+                <%= radio_button_tag :selection_method, :spaces %> Spaces
+                <br><br>
+                Number of people per team:<br>
+                <%= radio_button_tag :team_limit, :two, checked: true %> Two
+                <%= radio_button_tag :team_limit, :three %> Three
+                <%= radio_button_tag :team_limit, :four %> Four
+                <br><br>
+                <%= text_area_tag :input %><br><br>
+                <%= submit_tag "Analyze" %><br><br>
+            <% end %>
+        </div>
+        <div id="footer">
+            A hackathon project by Zachary Espiritu &amp; Isabella Berry, made at hackCooper 2016<br>
+            <a href="/">The Less Practical Version</a> | <a href="https://github.com/ZacharyEspiritu/github-dating-simulator">Source Code</a> | <a href="http://zacharyespiritu.com">Contact</a>
+        </div>
+    </div>
+<center>
+</div>

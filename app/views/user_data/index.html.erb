@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_data.each do |user_data| %>
+      <tr>
+        <td><%= user_data.username %></td>
+        <td><%= user_data.data %></td>
+        <td><%= link_to 'Show', user_data %></td>
+        <td><%= link_to 'Destroy', user_data, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

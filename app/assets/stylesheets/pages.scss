@@ -1,0 +1,71 @@
+body {
+  font-family: 'Dosis', sans-serif;
+  font-size: 55px;
+  color: #000;
+}
+html {
+  background: image-url("pink-outline-heart-background.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html, body {
+  /*overflow:hidden*/
+}
+input[type=text] {
+  padding:5px;
+  font-size: 20px;
+  border:2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+input[type=text]:focus {
+  border-color:#333;
+}
+input[type=submit] {
+  padding:5px;
+  border:2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+input[type=submit]:focus {
+  border-color:#333;
+}
+#container {
+  width:960px;
+  height:620px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-220px;
+  margin-left:-480px;
+  background:transparent;
+}
+#footer {
+  width: 100%;
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+h3{
+  font-size: 30px;
+  font-family: 'Dosis', sans-serif;
+}
+h2{
+  font-size: 25px;
+}
+textarea {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    font-size: 20px;
+}
+#header {
+  margin-bottom: 20px;
+}

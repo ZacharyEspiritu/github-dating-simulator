@@ -1,0 +1,31 @@
+<center>
+    <p id="notice"><%= notice %></p>
+
+    <div style="">Party Name: <%= @party.party_name %></div>
+
+    <% if @just_created %>
+        <div style="font-size: 32px;">
+            <br>This is your Party management link: <a href="/parties/<%= @party.party_name %>/manage?key=<%= @party.edit_key %>">link</a><br>
+            Don't lose this link, or you won't be able to generate team matches!
+        </div>
+    <% end %>
+
+    <div style="font-size: 30px;"><br>Current Usernames:</div>
+    <% @party.usernames.each do |username| %>
+        <div style="font-size: 20px;"><%= username %></div>
+    <% end %>
+
+    <% unless @party.activated %>
+        <%= form_tag party_add_user_path(@party) do %>
+            <%= text_field_tag :username, nil, placeholder: "Add Github Username", class: "buttn" %><br>
+            <%= submit_tag "Enter" %><br>
+        <% end %>
+        <br>
+    <% end %>
+
+        <div id="footer">
+            A hackathon project by Zachary Espiritu &amp; Isabella Berry, made at hackCooper 2016<br>
+                <a href="/">The Less Practical Version</a> | <a href="https://github.com/ZacharyEspiritu/github-dating-simulator">Source Code</a> | <a href="http://zacharyespiritu.com">Contact</a>
+        </div>
+
+</center>

@@ -1,0 +1,19 @@
+<div id="container">
+    <center>
+        <div id="header">
+            Github Dating Simulator
+        </div>
+        <div id="content">
+            <h3>Enter two Github usernames:<h3>
+            <%= form_tag analyze_path do %>
+                <%= text_field_tag :username_1, nil, placeholder: "Username 1", class: "buttn" %>  &nbsp; &nbsp; &nbsp;
+                <%= text_field_tag :username_2, nil, placeholder: "Username 2", class: "buttn" %><br><br>
+                <%= submit_tag "Analyze" %>
+            <% end %>
+        </div>
+        <div id="footer">
+            A hackathon project by Zachary Espiritu &amp; Isabella Berry, made at hackCooper 2016<br>
+                <a href="/practical">The More Practical Version</a> | <a href="https://github.com/ZacharyEspiritu/github-dating-simulator">Source Code</a> | <a href="http://zacharyespiritu.com">Contact</a>
+        </div>
+    <center>
+</div>

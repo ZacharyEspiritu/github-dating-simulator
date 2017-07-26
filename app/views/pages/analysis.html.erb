@@ -1,0 +1,50 @@
+<div class="results">
+    <%= @percentage %>%
+    <br><br>
+
+    <div class="user-results">
+        <div class="user-image">
+            <%= image_tag @user_1.avatar_url %>
+        </div>
+        <div class="user-name">
+            <%= @user_1.username %>
+        </div>
+        <% @user_1.data.sort_by {|_key, value| value}.reverse.each_with_index do |lang_block, index| %>
+            <% if index < 3 %>
+                <% unless lang_block.second < 7 %>
+                    <div class="user-language">
+                        <%= lang_block.first %> <%= lang_block.second %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div class="user-results">
+        <div class="user-image">
+            <%= image_tag @user_2.avatar_url %>
+        </div>
+        <div class="user-name">
+            <%= @user_2.username %>
+        </div>
+        <% @user_2.data.sort_by {|_key, value| value}.reverse.each_with_index do |lang_block, index| %>
+            <% if index < 3 %>
+                <% unless lang_block.second < 7 %>
+                    <div class="user-language">
+                        <%= lang_block.first %> <%= lang_block.second %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <br><br>
+
+    First Date Ideas:
+    <% @date_ideas.each do |idea| %>
+        <br><%= idea %>
+    <% end %>
+
+    <br><br>
+    <a href="http://www.hackalist.org/">Looking for a place for your first date?</a>
+</div>
